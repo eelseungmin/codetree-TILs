@@ -33,7 +33,7 @@ public class Main {
         initialize(n, k);
         int ans = 0;
         while (true) {
-            dir = changeDir(dir, map[x][y]);
+            changeDir(map[x][y]);
             ans++;
 
             int nx = x + dx[dir];
