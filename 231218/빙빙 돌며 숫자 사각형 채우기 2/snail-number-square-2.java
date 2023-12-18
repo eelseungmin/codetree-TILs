@@ -14,12 +14,11 @@ public class Main {
         n = sc.nextInt();
         m = sc.nextInt();
         map = new int[n][m];
-        int num = 0;
+        int num = 2;
         int dir = 0;
+        map[0][0] = 1;
         while (true) {
-            num++;
-            map[x][y] = num;
-            if (num >= n * m) {
+            if (num > n * m) {
                 break;
             }
             int nx = x + dx[dir];
@@ -29,6 +28,7 @@ public class Main {
             }
             x += dx[dir];
             y += dy[dir];
+            map[x][y] = num++;
         }
 
         StringBuilder sb = new StringBuilder();
