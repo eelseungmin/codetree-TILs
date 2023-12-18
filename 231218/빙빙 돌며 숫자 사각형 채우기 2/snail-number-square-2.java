@@ -18,7 +18,7 @@ public class Main {
         int dir = 0;
         map[0][0] = 1;
         while (true) {
-            if (num >= n * m) {
+            if (num >= m * n) {
                 break;
             }
             int nx = x + dx[dir];
@@ -33,7 +33,7 @@ public class Main {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < m; j++) {
                 sb.append(map[i][j] + " ");
             }
             sb.append('\n');
