@@ -22,11 +22,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        char[][] map = new char[n + 1][n + 1];
-        for (int i = 1; i <= n; i++) {
+        char[][] map = new char[n][n];
+        for (int i = 0; i < n; i++) {
             String tmp = sc.next();
-            for (int j = 1; j <= n; j++) {
-                map[i][j] = tmp.charAt(j - 1);
+            for (int j = 0; j < n; j++) {
+                map[i][j] = tmp.charAt(j);
             }
         }
         int k = sc.nextInt();
@@ -38,7 +38,7 @@ public class Main {
 
             int nx = x + dx[dir];
             int ny = y + dy[dir];
-            if (nx <= 0 || nx > n || ny <= 0 || ny > n) {
+            if (nx < 0 || nx >= n || ny < 0 || ny >= n) {
                 break;
             }
             x = nx;
@@ -50,13 +50,13 @@ public class Main {
 
     public static void initialize(int n, int k) {
         if (k <= n) {
-            x = 1; y = k; dir = 0;
+            x = 0; y = k - 1; dir = 0;
         } else if (k <= 2 * n) {
-            x = k - n; y = n; dir = 1;
+            x = k - n - 1; y = n - 1; dir = 1;
         } else if (k <= 3 * n) {
-            x = n; y = n - (k - 2 * n) + 1; dir = 2;
+            x = n - 1; y = n - (k - 2 * n); dir = 2;
         } else {
-            x = n - (k - 3 * n) + 1; y = 1; dir = 3;
+            x = n - (k - 3 * n); y = 0; dir = 3;
         }
     }
 
