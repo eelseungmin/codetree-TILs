@@ -6,11 +6,11 @@ public class Main {
     각 모양에 해당 방향에서의 레이저가 부딪힐 때 어느 방향으로 휘는지 정한다.
     휠 때 무조건 휘는 방향으로 한 칸 이동한다.
     아래쪽
-    /: 오른쪽, \: 왼쪽
+    /: 왼쪽, \: 오른쪽
     왼쪽
     /: 아래쪽, \: 위쪽
     위쪽
-    /: 왼쪽, \: 오른쪽
+    /: 오른쪽, \: 왼쪽
     오른쪽
     /: 위쪽, \: 아래쪽
     */
@@ -63,9 +63,9 @@ public class Main {
     public static void changeDir(char ch) {
         if (dir == 0) {
             if (ch == '/') {
-                dir = 3;
-            } else {
                 dir = 1;
+            } else {
+                dir = 3;
             }
         } else if (dir == 1) {
             if (ch == '/') {
@@ -75,9 +75,9 @@ public class Main {
             }
         } else if (dir == 2) {
             if (ch == '/') {
-                dir = 1;
-            } else {
                 dir = 3;
+            } else {
+                dir = 1;
             }
         } else {
             if (ch == '/') {
