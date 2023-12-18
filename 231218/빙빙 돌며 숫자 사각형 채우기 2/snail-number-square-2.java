@@ -13,7 +13,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
-        map = new int[n][m];
+        map = new int[m][n];
         int num = 2;
         int dir = 0;
         map[0][0] = 1;
