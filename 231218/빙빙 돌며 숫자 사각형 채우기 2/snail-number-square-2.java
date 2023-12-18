@@ -18,7 +18,7 @@ public class Main {
         int dir = 0;
         map[0][0] = 1;
         while (true) {
-            if (num > n * m) {
+            if (num >= n * m) {
                 break;
             }
             int nx = x + dx[dir];
