@@ -18,6 +18,7 @@ public class Main {
     static int[] dy = {0, -1, 0, 1};
     static int x = 0;
     static int y = 0;
+    static int dir = 0;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -29,7 +30,6 @@ public class Main {
             }
         }
         int k = sc.nextInt();
-        int dir = (k - 1) / n;
         initialize(n, k);
         int ans = 0;
         while (true) {
@@ -50,44 +50,41 @@ public class Main {
 
     public static void initialize(int n, int k) {
         if (k <= n) {
-            x = 1; y = k;
+            x = 1; y = k; dir = 0;
         } else if (k <= 2 * n) {
-            x = k - n; y = n;
+            x = k - n; y = n; dir = 1;
         } else if (k <= 3 * n) {
-            x = n; y = n - (k - 2 * n) + 1;
+            x = n; y = n - (k - 2 * n) + 1; dir = 2;
         } else {
-            x = n - (k - 3 * n) + 1; y = 1;
+            x = n - (k - 3 * n) + 1; y = 1; dir = 3;
         }
     }
 
-    public static int changeDir(int dir, char ch) {
-        int res = -1;
+    public static void changeDir(char ch) {
         if (dir == 0) {
             if (ch == '/') {
-                res = 3;
+                dir = 3;
             } else {
-                res = 1;
+                dir = 1;
             }
         } else if (dir == 1) {
             if (ch == '/') {
-                res = 0;
+                dir = 0;
             } else {
-                res = 2;
+                dir = 2;
             }
         } else if (dir == 2) {
             if (ch == '/') {
-                res = 1;
+                dir = 1;
             } else {
-                res = 3;
+                dir = 3;
             }
         } else {
             if (ch == '/') {
-                res = 2;
+                dir = 2;
             } else {
-                res = 0;
+                dir = 0;
             }
         }
-
-        return res;
     }
 }
