@@ -15,10 +15,10 @@ public class Main {
         map[0][0] = 'A';
         dir = 0;
         val = 'A';
-        cnt = 0;
+        cnt = 1;
         end = n * m - 1;
         while (end-- > 0) {
-            if (cnt == 25) {
+            if (cnt == 26) {
                 cnt = 0;
             }
             int nx = x + dx[dir];
@@ -28,8 +28,8 @@ public class Main {
             }
             x += dx[dir];
             y += dy[dir];
-            cnt++;
             map[x][y] = (char)((int) val + cnt);
+            cnt++;
         }
 
         StringBuilder sb = new StringBuilder();
