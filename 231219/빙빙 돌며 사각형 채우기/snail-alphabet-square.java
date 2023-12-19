@@ -4,7 +4,7 @@ public class Main {
     static int[] dx = {0, 1, 0, -1};
     static int[] dy = {1, 0, -1, 0};
     static char[][] map;
-    static int n, m, x, y, dir, val, cnt;
+    static int n, m, x, y, dir, val, cnt, end;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -16,19 +16,15 @@ public class Main {
         dir = 0;
         val = 'A';
         cnt = 0;
-        while (true) {
+        end = n * m - 1;
+        while (end-- > 0) {
             if (cnt == 25) {
-                cnt = cnt % 25;
+                cnt = 0;
             }
             int nx = x + dx[dir];
             int ny = y + dy[dir];
             if ((nx < 0 || nx >= n || ny < 0 || ny >= m) || map[nx][ny] != '\u0000') {
                 dir = (dir + 1) % 4;
-            }
-            nx = x + dx[dir];
-            ny = y + dy[dir];
-            if ((nx < 0 || nx >= n || ny < 0 || ny >= m) || map[nx][ny] != '\u0000') {
-                break;
             }
             x += dx[dir];
             y += dy[dir];
