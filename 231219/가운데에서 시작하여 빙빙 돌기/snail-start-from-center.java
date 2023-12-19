@@ -10,21 +10,27 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt(); // 항상 홀수
         map = new int[n][n];
-        int num = 1;
         int dir = 0;
         int x = n / 2;
         int y = n / 2;
         map[x][y] = 1;
         int end = 1;
+        int moveMax = 1;
+        int moveNum = 0;
         while (end++ < n * n) {
             int nx = x + dx[dir];
             int ny = y + dy[dir];
-            if ((nx < 0 || nx >= n || ny < 0 || ny >= n) || map[nx][ny] != 0) {
+            if (moveNum == moveMax) {
                 dir = (dir + 1) % 4;
+                moveNum = 0;
+                if(dir == 0 || dir == 2) {
+                    moveMax++;
+                }
             }
             x += dx[dir];
             y += dy[dir];
             map[x][y] = end;
+            moveNum++;
         }
 
         StringBuilder sb = new StringBuilder();
