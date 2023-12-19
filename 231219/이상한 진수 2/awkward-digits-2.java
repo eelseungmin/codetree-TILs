@@ -15,13 +15,7 @@ public class Main {
                 ch = '0';
             }
             String tmp = "";
-            if (i == 0) {
-                tmp = ch + s.substring(i + 1, s.length());
-            } else if (0 <= i && i < s.length() - 1) {
-                tmp = s.substring(0, i) + ch + s.substring(i + 1, s.length());
-            } else {
-                tmp = s.substring(0, i) + ch;
-            }
+            tmp = s.substring(0, i) + ch + s.substring(i + 1, s.length());
             n = Math.max(n, Integer.parseInt(tmp, 2));
         }
 
