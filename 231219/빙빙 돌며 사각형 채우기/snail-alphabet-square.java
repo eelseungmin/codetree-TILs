@@ -22,7 +22,7 @@ public class Main {
             }
             int nx = x + dx[dir];
             int ny = y + dy[dir];
-            if ((nx < 0 || nx >= n || ny < 0 || ny >= n) || map[nx][ny] != '\u0000') {
+            if ((nx < 0 || nx >= n || ny < 0 || ny >= m) || map[nx][ny] != '\u0000') {
                 dir = (dir + 1) % 4;
             }
             if (map[x + dx[dir]][y + dy[dir]] != '\u0000') {
