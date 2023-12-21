@@ -14,6 +14,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 for (int k = j + 1; k < n; k++) {
+                    // System.out.println(i + " " + j + " " + k + " " + isCarry(arr[i], arr[j]) + " " + isCarry(arr[i] + arr[j], arr[k]));
                     if (!isCarry(arr[i], arr[j])) {
                         if (!isCarry(arr[i] + arr[j], arr[k])) {
                             ans = Math.max(ans, arr[i] + arr[j] + arr[k]);
@@ -32,28 +33,21 @@ public class Main {
 
     // 숫자끼리 더할 때 각 수의 자리수를 구해서 더해보고 10이상이면 carry 발생으로 간주
     public static boolean isCarry(int a, int b) {
-        Stack<Integer> st = new Stack<>();
-        while (true) {
-            if (a / 10 == 0) {
-                st.push(a % 10);
-                break;
-            }
-            st.push(a / 10);
+        List<Integer> list = new ArrayList<>();
+        while (a > 0) {
+            list.add(a % 10);
             a /= 10;
         }
 
-        Stack<Integer> st2 = new Stack<>();
-        while (true) {
-            if (b / 10 == 0) {
-                st2.push(b % 10);
-                break;
-            }
-            st2.push(b / 10);
+
+        List<Integer> list2 = new ArrayList<>();
+        while (b > 0) {
+            list2.add(b % 10);
             b /= 10;
         }
 
-        for (int i = 0; i < Math.min(st.size(), st2.size()); i++) {
-            if (st.pop() + st2.pop() >= 10) {
+        for (int i = 0; i < Math.min(list.size(), list2.size()); i++) {
+            if (list.get(i) + list2.get(i) >= 10) {
                 return true;
             }
         }
