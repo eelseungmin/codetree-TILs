@@ -40,9 +40,10 @@ public class Main {
                         tmp += map[nx][ny];
                         curx = nx;
                         cury = ny;
-                    }
-                    if (tmp.equals("LEE")) {
-                        ans++;
+                        if (tmp.equals("LEE")) {
+                            ans++;
+                            break;
+                        }
                     }
                 }
             }
