@@ -14,7 +14,7 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = 0; i <= 100 - (2 * k + 1); i++) {
+        for (int i = 0; i <= 100 - 2 * k; i++) {
             int sum = 0;
             for (int j = i; j < i + 2 * k + 1; j++) {
                 sum += basket[j];
