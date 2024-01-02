@@ -11,7 +11,7 @@ public class Main {
             seg[i][1] = sc.nextInt();
         }
 
-        double max = 0;
+        double max = 0.0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++) {
