@@ -16,10 +16,10 @@ public class Main {
             int total = b;
             int cnt = 0;
             for (int j = 0; j < n; j++) {
-                if (i == j && total - price[j] / 2 > 0) {
+                if (i == j && total - price[j] / 2 >= 0) {
                     total -= price[j] / 2;
                     cnt++;
-                } else if (total - price[j] > 0) {
+                } else if (total - price[j] >= 0) {
                     total -= price[j];
                     cnt++;
                 } else {
