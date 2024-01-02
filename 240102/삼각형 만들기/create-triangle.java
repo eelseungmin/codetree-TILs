@@ -23,6 +23,6 @@ public class Main {
             }
         }
 
-        System.out.print((int) max * 2);
+        System.out.print(max * 2);
     }
 }
