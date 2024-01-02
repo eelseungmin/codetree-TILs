@@ -18,11 +18,11 @@ public class Main {
                     if (i == j || j == k || k == i) continue;
                     if (seg[i][0] != seg[j][0] && seg[j][0] != seg[k][0] && seg[k][0] != seg[i][0]) continue;
                     if (seg[i][1] != seg[j][1] && seg[j][1] != seg[k][1] && seg[k][1] != seg[i][1]) continue;
-                    max = Math.max(max, (double) Math.abs((seg[i][0] * seg[j][1] + seg[j][0] * seg[k][1] + seg[k][0] * seg[i][1]) - (seg[j][0] * seg[i][1] + seg[k][0] * seg[j][1] + seg[i][0] * seg[k][1])) / 2.0);
+                    max = Math.max(max, (double) Math.abs((seg[i][0] * seg[j][1] + seg[j][0] * seg[k][1] + seg[k][0] * seg[i][1]) - (seg[j][0] * seg[i][1] + seg[k][0] * seg[j][1] + seg[i][0] * seg[k][1])) * 0.5);
                 }
             }
         }
 
-        System.out.print(max * 2);
+        System.out.print((int) max * 2);
     }
 }
