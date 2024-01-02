@@ -12,9 +12,10 @@ public class Main {
         }
 
         int max = -1;
-        for (int i = 0; i < n - k; i++) {
-            for (int j = i; j <= i + k; j++) {
-                if (i != j && bomb[i] == bomb[j]) {
+        // 0 1 2 3 4 5
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (j - i == k && bomb[i] == bomb[j]) {
                     max = Math.max(max, bomb[j]);
                 }
             }
