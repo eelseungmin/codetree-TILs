@@ -10,6 +10,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             price[i] = sc.nextInt();
         }
+        Arrays.sort(price);
 
         int max = 0;
         for (int i = 0; i < n; i++) {
