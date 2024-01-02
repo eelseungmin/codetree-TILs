@@ -11,10 +11,7 @@ class Student implements Comparable<Student> {
 
         @Override
         public int compareTo(Student s) {
-            if (this.price == s.price) {
-                return this.trans - s.trans;
-            }
-            return this.price - s.price;
+            return this.price + this.trans - s.price + s.trans;
         }
     }
 
@@ -43,6 +40,7 @@ public class Main {
                     budget = budget - s[j].price - s[j].trans;
                     cnt++;
                 } else {
+                    System.out.println(i + " " + j + " " + s[j].price + " " + s[j].trans + " " + budget);
                     break;
                 }
             }
