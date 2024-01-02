@@ -17,7 +17,7 @@ public class Main {
             boolean flag = false;
             for (int j = 0; j < n; j++) {
                 if (i == j) continue;
-                if ((x1[i] >= x1[j] && x2[i] <= x2[j]) || (x1[j] >= x1[i] && x2[j] <= x1[i])) {
+                if ((x1[i] >= x1[j] && x2[i] <= x2[j]) || (x1[j] >= x1[i] && x2[j] <= x2[i])) {
                     flag = true;
                     break;
                 }
