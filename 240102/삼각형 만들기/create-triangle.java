@@ -11,18 +11,18 @@ public class Main {
             seg[i][1] = sc.nextInt();
         }
 
-        int max = 0;
+        double max = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++) {
                     if (i == j || j == k || k == i) continue;
                     if (seg[i][0] != seg[j][0] && seg[j][0] != seg[k][0] && seg[k][0] != seg[i][0]) continue;
                     if (seg[i][1] != seg[j][1] && seg[j][1] != seg[k][1] && seg[k][1] != seg[i][1]) continue;
-                    max = Math.max(max, Math.abs((seg[i][0] * seg[j][1] + seg[j][0] * seg[k][1] + seg[k][0] * seg[i][1]) - (seg[j][0] * seg[i][1] + seg[k][0] * seg[j][1] + seg[i][0] * seg[k][1])) / 2);
+                    max = Math.max(max, (double) Math.abs((seg[i][0] * seg[j][1] + seg[j][0] * seg[k][1] + seg[k][0] * seg[i][1]) - (seg[j][0] * seg[i][1] + seg[k][0] * seg[j][1] + seg[i][0] * seg[k][1])) / 2.0);
                 }
             }
         }
 
-        System.out.print(max * 2);
+        System.out.print((int) max * 2);
     }
 }
