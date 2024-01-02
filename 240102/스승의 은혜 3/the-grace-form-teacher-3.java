@@ -11,7 +11,7 @@ class Student implements Comparable<Student> {
 
         @Override
         public int compareTo(Student s) {
-            return this.price + this.trans - s.price + s.trans;
+            return (this.price / 2 + this.trans) - (s.price / 2 + s.trans);
         }
     }
 
@@ -32,17 +32,17 @@ public class Main {
             int budget = b;
             int cnt = 0;
             for (int j = 0; j < n; j++) {
-                if (i == j && budget - s[j].price / 2 - s[j].trans >= 0) {
+                if (i == j) {
                     budget -= s[j].price / 2;
                     budget -= s[j].trans;
-                    cnt++;
-                } else if (budget - s[j].price - s[j].trans >= 0) {
-                    budget = budget - s[j].price - s[j].trans;
-                    cnt++;
+                    System.out.print(i + " " + j + " " + s[j].price + " " + s[j].trans + " " + budget);
                 } else {
-                    System.out.println(i + " " + j + " " + s[j].price + " " + s[j].trans + " " + budget);
-                    break;
+                    budget = budget - s[j].price - s[j].trans;
+                    System.out.print(i + " " + j + " " + s[j].price + " " + s[j].trans + " " + budget);
                 }
+                 
+                if (budget >= 0) cnt++;
+                else break;
             }
             ans = Math.max(ans, cnt);
         }
