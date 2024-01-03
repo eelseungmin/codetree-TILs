@@ -11,7 +11,9 @@ class Student implements Comparable<Student> {
 
         @Override
         public int compareTo(Student s) {
-            return (this.price / 2 + this.trans) - (s.price / 2 + s.trans);
+            if (this.price + this.trans == s.price + s.trans)
+                return (this.price / 2 + this.trans) - (s.price / 2 + s.trans);
+            return (this.price + this.trans) - (s.price + s.trans);
         }
     }
 
@@ -39,9 +41,10 @@ public class Main {
                     budget = budget - s[j].price - s[j].trans;
                 }
                  
-                if (budget >= 0) cnt++;
-                else {
+                if (budget >= 0) {
                     cnt++;
+                }
+                else {
                     break;
                 }
             }
