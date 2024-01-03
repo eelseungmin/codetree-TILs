@@ -17,7 +17,7 @@ public class Main {
         for (int i = a; i <= b; i++) {
             int d1 = Integer.MAX_VALUE;
             int d2 = Integer.MAX_VALUE;
-            for (int j = a; j <= b; j++) {
+            for (int j = 1; j <= 1000; j++) {
                 if (pos[j] == 'S') {
                     d1 = Math.min(d1, Math.abs(j - i));
                 } else if (pos[j] == 'N') {
