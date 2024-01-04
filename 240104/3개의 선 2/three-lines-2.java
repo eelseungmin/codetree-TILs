@@ -26,7 +26,7 @@ public class Main {
                     if (success) ans = 1;
 
                     // x축에 평행한 직선 2개, y축에 평행한 직선 1개
-                    boolean success = true;
+                    success = true;
                     for (int l = 0; l < n; l++) {
                         if (seg[l][1] == i || seg[l][1] == j || seg[l][0] == k) continue;
 
@@ -35,7 +35,7 @@ public class Main {
                     if (success) ans = 1;
 
                     // x축에 평행한 직선 1개, y축에 평행한 직선 2개
-                    boolean success = true;
+                    success = true;
                     for (int l = 0; l < n; l++) {
                         if (seg[l][1] == i || seg[l][0] == j || seg[l][0] == k) continue;
 
@@ -44,7 +44,7 @@ public class Main {
                     if (success) ans = 1;
 
                     // y축에 평행한 직선 3개
-                    boolean success = true;
+                    success = true;
                     for (int l = 0; l < n; l++) {
                         if (seg[l][0] == i || seg[l][0] == j || seg[l][0] == k) continue;
 
