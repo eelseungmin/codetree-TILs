@@ -27,7 +27,6 @@ public class Main {
                     }
                     if (cond1 + cond2 == 3) {
                         team++;
-                        System.out.println(i + " " + j + " " + cond1 + " " + cond2);
                     }
                 }
 
