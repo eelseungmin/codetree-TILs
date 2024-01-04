@@ -63,6 +63,6 @@ public class Main {
             }
         }
 
-        System.out.print(team / 2);
+        System.out.print(team);
     }
 }
