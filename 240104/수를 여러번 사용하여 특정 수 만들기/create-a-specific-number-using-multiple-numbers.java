@@ -9,6 +9,7 @@ public class Main {
         int b = sc.nextInt();
         int c = sc.nextInt();
 
+        int ans = 0;
         for (int i = 0; i * a <= c; i++) {
             int cnt = a * i;
 
