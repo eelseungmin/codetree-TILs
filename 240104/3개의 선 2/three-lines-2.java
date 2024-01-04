@@ -8,7 +8,7 @@ public class Main {
         int[][] seg = new int[n][2];
         for (int i = 0; i < n; i++) {
             seg[i][0] = sc.nextInt();
-            seg[i][1] = sc.enxtInt();
+            seg[i][1] = sc.nextInt();
         }
 
         int ans = 0;
