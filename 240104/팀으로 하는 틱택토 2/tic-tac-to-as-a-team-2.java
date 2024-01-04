@@ -16,6 +16,7 @@ public class Main {
         int team = 0;
         for (int i = 1; i <= 9; i++) {
             for (int j = i + 1; j <= 9; j++) {
+                boolean win = false;
 
                 for (int l = 0; l < 3; l++) {
                     int cond1 = 0;
@@ -25,7 +26,7 @@ public class Main {
                         if (map[l][k] == j) cond2++;                    
                     }
                     if (cond1 + cond2 == 3 && cond1 >= 1 && cond2 >= 1) {
-                        team++;
+                        win = true;
                     }
                 }
 
@@ -37,7 +38,7 @@ public class Main {
                         if (map[k][l] == j) cond2++;
                     }
                     if (cond1 + cond2 == 3 && cond1 >= 1 && cond2 >= 1) {
-                        team++;
+                        win = true;
                     }
                 }
 
@@ -48,7 +49,7 @@ public class Main {
                     if (map[l][l] == j) cond2++;
                 }
                 if (cond1 + cond2 == 3 && cond1 >= 1 && cond2 >= 1) {
-                    team++;
+                    win = true;
                 }
 
                 cond1 = 0;
@@ -58,6 +59,10 @@ public class Main {
                     if (map[2 - l][l] == j) cond2++;
                 }
                 if (cond1 + cond2 == 3 && cond1 >= 1 && cond2 >= 1) {
+                    win = true;
+                }
+
+                if (win) {
                     team++;
                 }
             }
