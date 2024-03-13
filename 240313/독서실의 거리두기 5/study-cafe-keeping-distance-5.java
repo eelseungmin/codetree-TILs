@@ -21,7 +21,7 @@ public class Main {
         System.out.print(ans);
     }
 
-    static void getMinDist(char[] str) {
+    static int getMinDist(char[] str) {
         int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < n; i++) {
