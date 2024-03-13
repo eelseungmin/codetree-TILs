@@ -12,9 +12,9 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             if (str[i] == '0') {
-                str[i] == '1';
+                str[i] = '1';
                 ans = Math.max(ans, getMinDist(str));
-                str[i] == '0';
+                str[i] = '0';
             }
         }
         
