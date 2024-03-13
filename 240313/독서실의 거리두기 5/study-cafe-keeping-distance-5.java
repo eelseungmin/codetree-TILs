@@ -13,7 +13,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             if (str[i] == '0') {
                 str[i] = '1';
-                ans = Math.max(ans, getMinDist(str));
+                ans = Math.max(ans, getMinDist(str, n));
                 str[i] = '0';
             }
         }
@@ -21,7 +21,7 @@ public class Main {
         System.out.print(ans);
     }
 
-    static int getMinDist(char[] str) {
+    static int getMinDist(char[] str, int n) {
         int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < n; i++) {
