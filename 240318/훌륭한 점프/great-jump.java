@@ -17,7 +17,7 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        for (int max = Math.max(arr[0], arr[4]); max <= 100; max++) {
+        for (int max = Math.max(arr[0], arr[n - 1]); max <= 100; max++) {
             if(isPossible(max)) {
                 System.out.print(max);
                 break;
