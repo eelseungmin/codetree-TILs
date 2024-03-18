@@ -14,7 +14,7 @@ public class Main {
 
         boolean[] exploded = new boolean[n];
         for (int i = 0; i < n - k; i++) {
-            for (int j = i; j < i + k; j++) {
+            for (int j = i + 1; j < i + k; j++) {
                 if (bomb[i] == bomb[j]) {
                     exploded[i] = true;
                     exploded[j] = true;
