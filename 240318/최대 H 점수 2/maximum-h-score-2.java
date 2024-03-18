@@ -19,7 +19,7 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 if (arr[j] >= h) {
                     cnt++;
-                } else if (arr[j] == i - 1) {
+                } else if (arr[j] == h - 1) {
                     if (cntL < l) {
                         cnt++;
                         cntL++;
