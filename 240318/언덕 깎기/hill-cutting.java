@@ -8,26 +8,24 @@ public class Main {
         int n = sc.nextInt();
         
         int[] hill = new int[n];
-        int minh = 101;
-        int maxh = -1;
         for (int i = 0; i < n; i++) {
             hill[i] = sc.nextInt();
-            minh = Math.min(minh, hill[i]);
-            maxh = Math.max(maxh, hill[i]);
         }
 
-        int cost = Integer.MAX_VALUE;
-        for (int x = 0; x <= 100 - minh; x++) {
-            if (maxh - (minh + x) <= 17) {
-                cost = Math.min(cost, x * x);
-            }
-            for (int y = 0; y <= maxh; y++) {
-                if ((maxh - y) - (minh + x) <= 17) {
-                    cost = Math.min(cost, x * x + y * y);
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i <= 100; i++) {
+            int cost = 0;
+            for (int j = 0; j < n; j++) {
+                if (hill[j] < i) {
+                    cost += (hill[j] - i) * (hill[j] - i)
+                }   
+                if (hill[j] > i + k) {
+                    cost += (hill[j] - i - k) * (hill[j] - i - k);
                 }
             }
+            ans = Math.min(ans, cost);
         }
 
-        System.out.print(cost);
+        System.out.print(ans);
     }
 }
