@@ -32,9 +32,9 @@ public class Main {
         int maxNum = 0;
         int maxVal = 0;
         for (int i = 0; i <= n; i++) {
-            if (maxVal < cnt[i]) {
+            if (maxVal <= cnt[i]) {
                 maxVal = cnt[i];
-                maxNum = i;
+                maxNum = Math.max(maxNum, i);
             }
         }
 
