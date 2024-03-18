@@ -17,7 +17,7 @@ public class Main {
             int cost = 0;
             for (int j = 0; j < n; j++) {
                 if (hill[j] < i) {
-                    cost += (hill[j] - i) * (hill[j] - i)
+                    cost += (hill[j] - i) * (hill[j] - i);
                 }   
                 if (hill[j] > i + k) {
                     cost += (hill[j] - i - k) * (hill[j] - i - k);
