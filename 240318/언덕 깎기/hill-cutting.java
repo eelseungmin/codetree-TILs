@@ -19,8 +19,8 @@ public class Main {
                 if (hill[j] < i) {
                     cost += (hill[j] - i) * (hill[j] - i);
                 }   
-                if (hill[j] > i + k) {
-                    cost += (hill[j] - i - k) * (hill[j] - i - k);
+                if (hill[j] > i + 17) {
+                    cost += (hill[j] - i - 17) * (hill[j] - i - 17);
                 }
             }
             ans = Math.min(ans, cost);
