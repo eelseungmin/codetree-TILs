@@ -35,7 +35,10 @@ public class Main {
             if (maxVal < cnt[i]) {
                 maxVal = cnt[i];
                 maxNum = i;
-            } else if (maxVal == cnt[i]) {
+            }
+        }
+        for (int i = 0; i <= n; i++) {
+            if (maxVal == cnt[i]) {
                 maxNum = Math.max(maxNum, i);
             }
         }
