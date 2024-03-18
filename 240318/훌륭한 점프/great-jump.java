@@ -17,14 +17,13 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        int ans = Integer.MAX_VALUE;
         for (int max = Math.max(arr[0], arr[4]); max <= 100; max++) {
             if(isPossible(max)) {
-                ans = Math.min(ans, max);
+                System.out.print(max);
+                break;
             }
         }
 
-        System.out.print(ans);
     }
 
     public static boolean isPossible(int val) {
