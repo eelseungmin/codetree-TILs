@@ -34,7 +34,7 @@ public class Main {
 
                 sum += arr[j];
             }
-            if (flag && cnt == m - 1) {
+            if (flag && cnt <= m - 1) {
                 ans = Math.min(ans, i);
             }
         }
