@@ -15,9 +15,15 @@ public class Main {
         for (int h = 0; h <= 100; h++) {
             
             int cnt = 0;
+            int cntL = 0;
             for (int j = 0; j < n; j++) {
                 if (arr[j] >= h) {
                     cnt++;
+                } else if (arr[j] == i - 1) {
+                    if (cntL < l) {
+                        cnt++;
+                        cntL++;
+                    }
                 }
             }
             if (cnt >= h) {
