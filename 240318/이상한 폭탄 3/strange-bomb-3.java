@@ -14,8 +14,8 @@ public class Main {
 
         boolean[] exploded = new boolean[n];
         for (int i = 0; i < n - k; i++) {
-            for (int j = i + 1; j < i + k; j++) {
-                if (bomb[i] == bomb[j]) {
+            for (int j = i; j < i + k; j++) {
+                if (i != j && bomb[i] == bomb[j]) {
                     exploded[i] = true;
                     exploded[j] = true;
                 }
@@ -31,13 +31,13 @@ public class Main {
         
         int maxNum = 0;
         int maxVal = 0;
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i <= 1000000; i++) {
             if (cnt[i] != 0 && maxVal < cnt[i]) {
                 maxVal = cnt[i];
                 maxNum = i;
             }
         }
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i <= 1000000; i++) {
             if (cnt[i] != 0 && maxVal == cnt[i]) {
                 maxNum = Math.max(maxNum, i);
             }
