@@ -1,58 +1,42 @@
 import java.util.*;
 
 public class Main {
-    static boolean[] vis;
-    static int[] nums;
-    static int[] sums;
-
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        sums = new int[n - 1];
+        int[] sums = new int[n - 1];
         for (int i = 0; i < n - 1; i++) {
             sums[i] = sc.nextInt();
         }
 
-        nums = new int[n];
-        vis = new boolean[n + 1];
+        int[] arr = new int[n];
+        // 1000!이므로 단순 완전탐색은 x
+        // 수열의 초항이 정해지면 나머지 항은 정해진다.
+        for (int i = 1; i <= n; i++) {
+            arr[0] = i;
 
-        findComb(n, 0);
-    }
+            for (int j = 1; j < n; j++) {
+                // sums[i] == arr[i] + arr[i + 1]
+                arr[j] = sums[j - 1] - arr[j - 1];
+            }
 
-    static void findComb(int n, int depth) {
-        if (depth == n) {
-            if (isDup(n)) {
-                for (int i = 0; i < n; i++) {
-                    System.out.print(nums[i] + " ");
-                    return;
+            boolean satis = true;
+            boolean[] isUsed = new boolean[1001];
+            for (int j = 0; j < n; j++) {
+                if (arr[j] <= 0 || arr[j] > n) {
+                    satis = false;
+                } else {
+                    if (isUsed[arr[j]]) {
+                        satis = false;
+                    }
+                    isUsed[arr[j]] = true;
                 }
             }
-        }
-
-        for (int i = 1; i <= n; i++) {
-            if (!vis[i]) {
-                nums[i - 1] = i;
-                findComb(n, depth + 1);
-                nums[i - 1] = 0;
+            if (!satis) continue;
+            for (int j = 0; j < n; j++) {
+                System.out.print(arr[j] + " ");
             }
         }
-    }
-
-    static boolean isDup(int n) {
-        int[] tempSums = new int[n - 1];
-        for (int i = 0; i < n - 1; i++) {
-            tempSums[i] = nums[i] + nums[i + 1];
-        }
-
-        Arrays.sort(tempSums);
-        Arrays.sort(nums);
-
-        for (int i = 0; i < n - 1; i++) {
-            if (tempSums[i] != nums[i])
-                return false;
-        }
-
-        return true; 
     }
 }
