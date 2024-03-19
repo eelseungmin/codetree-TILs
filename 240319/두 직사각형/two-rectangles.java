@@ -22,6 +22,6 @@ public class Main {
         if (x[0] > a[1] || x[1] < a[0] || y[0] > b[1] || b[0] > y[1]) overlap = false;
 
         if (overlap) System.out.print("overlapping");
-        else System.out.print("nonoverapping");
+        else System.out.print("nonoverlapping");
     }
 }
