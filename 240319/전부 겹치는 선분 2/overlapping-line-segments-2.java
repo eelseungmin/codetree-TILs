@@ -20,7 +20,7 @@ public class Main {
             int minx2 = 101;
             for (int j = 0; j < n; j++) {
                 if (i == j) continue;
-                maxx1 = Math.max(maxx1, x1[i]);
+                maxx1 = Math.max(maxx1, x1[j]);
                 minx2 = Math.min(minx2, x2[j]);
             }
             if (minx2 >= maxx1) {
