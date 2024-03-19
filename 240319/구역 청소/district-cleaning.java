@@ -22,6 +22,7 @@ public class Main {
                 dup++;
         }
 
-        System.out.print(b - a + d - c - dup + 1);
+        if (dup > 0) System.out.print(b - a + d - c - dup + 1);
+        else System.out.print(b - a + d - c);
     }
 }
