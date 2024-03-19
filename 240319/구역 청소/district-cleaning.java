@@ -16,12 +16,12 @@ public class Main {
         for (int i = c; i <= d; i++) {
             cnt[i]++;
         }
-        int ans = 0;
+        int dup = 0;
         for (int i = 0; i <= 100; i++) {
-            if (cnt[i] > 0)
-                ans++;
+            if (cnt[i] > 1)
+                dup++;
         }
 
-        System.out.print(ans - 1);
+        System.out.print(b - a + d - c - dup + 1);
     }
 }
