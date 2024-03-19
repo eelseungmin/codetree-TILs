@@ -14,7 +14,7 @@ public class Main {
             maxx1 = Math.max(maxx1, x1);
         }
 
-        if (maxx1 > minx2) {
+        if (maxx1 >= minx2) {
             System.out.print("Yes");
         } else {
             System.out.print("No");
