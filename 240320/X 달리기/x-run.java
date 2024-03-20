@@ -14,7 +14,7 @@ public class Main {
             while (road < x) {
                 road += speed;
 
-                if (road < i) {
+                if (time >= 1 && road < i) {
                     speed++;
                 } else if (speed > 1) {
                     speed--;
