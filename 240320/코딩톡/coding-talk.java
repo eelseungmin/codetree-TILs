@@ -19,6 +19,10 @@ public class Main {
             info2[i] = u;
         }
 
+        if (info2[p - 1] == 0) {
+            return;
+        }
+
         for (int i = p - 1; i < m; i++) {
             readers[info1[i] - 'A'] = true;
         }
