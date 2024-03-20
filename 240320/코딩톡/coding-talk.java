@@ -9,7 +9,6 @@ public class Main {
         int m = sc.nextInt();
         int p = sc.nextInt();
         
-        boolean[] readers = new boolean[26];
         char[] info1 = new char[100];
         int[] info2 = new int[100];
         for (int i = 0; i < m; i++) {
@@ -23,15 +22,16 @@ public class Main {
             return;
         }
 
-        for (int i = p - 1; i < m; i++) {
-            if (i == p - 1 && i - 1 >= 0 && info2[i] == info2[i - 1]) {
-                readers[info1[i - 1] - 'A'] = true;
-            }
-            readers[info1[i] - 'A'] = true;
-        }
-
         for (int i = 0; i < n; i++) {
-            if (!readers[i]) {
+            
+            char person = (char) (i + 'A');
+            boolean read = false;
+            for (int j = 0; j < m; j++) {
+                if (info1[j] == person && info2[j] >= info2[p - 1])
+                    read = true;
+            }
+
+            if (!read) {
                 System.out.print((char) (i + 'A') + " ");
             }
         }
