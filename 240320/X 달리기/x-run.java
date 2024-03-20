@@ -21,6 +21,7 @@ public class Main {
                 }
 
                 time++;
+                // System.out.println(time + " " + speed + " " + road);
             } 
             if (speed == 1) {
                 ans = Math.min(ans, time);
