@@ -26,7 +26,6 @@ public class Main {
         for (int i = p - 1; i < m; i++) {
             if (i == p - 1 && i - 1 >= 0 && info2[i] == info2[i - 1]) {
                 readers[info1[i - 1] - 'A'] = true;
-                continue;
             }
             readers[info1[i] - 'A'] = true;
         }
