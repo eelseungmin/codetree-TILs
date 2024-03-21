@@ -27,6 +27,8 @@ public class Main {
         int ans = 0;
         if (diff1 == 2 || diff2 == 2) {
             ans = 1;
+        } else if (diff1 == 1 && diff2 == 1) {
+            ans = 0;
         } else {
             ans = 2;
         }
