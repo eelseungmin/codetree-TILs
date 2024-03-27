@@ -26,10 +26,26 @@ public class Main {
         }
 
         boolean flag = false;
+        int edge = -1;
         if (seat[n - 1] == '0') {
             for (int i = n - 2; i >= 0; i--) {
                 if (seat[i] == '1') {
                     if ((l + r) / 2 - l < n - 1 - i) {
+                        edge = n - 1;
+                        diff = n - 1 - i;
+                        flag = true;
+                    }
+                    break;
+                }
+            }
+        }
+
+        if (seat[0] == '0') {
+            for (int i = 1; i < n; i++) {
+                if (seat[i] == '1') {
+                    if (diff < i && (l + r) / 2 - l < i) {
+                        edge = 0;
+                        diff = i;
                         flag = true;
                     }
                     break;
@@ -38,7 +54,7 @@ public class Main {
         }
 
         if (flag) {
-            seat[n - 1] = '1';
+            seat[edge] = '1';
         } else {
             seat[(l + r) / 2] = '1';
         }
