@@ -18,8 +18,8 @@ public class Main {
                             diff = j - i;
                             l = i;
                             r = j;
-                            break;
-                        } 
+                        }
+                        break;
                     }
                 }
             }
@@ -31,8 +31,8 @@ public class Main {
                 if (seat[i] == '1') {
                     if (diff < n - 1 - i) {
                         flag = true;
-                        break;
                     }
+                    break;
                 }
             }
         }
