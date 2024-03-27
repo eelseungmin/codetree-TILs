@@ -25,15 +25,14 @@ public class Main {
             }
         }
 
-        boolean flag = false;
+        int diff2 = 0;
         int edge = -1;
         if (seat[n - 1] == '0') {
             for (int i = n - 2; i >= 0; i--) {
                 if (seat[i] == '1') {
                     if ((l + r) / 2 - l < n - 1 - i) {
                         edge = n - 1;
-                        diff = n - 1 - i;
-                        flag = true;
+                        diff2 = n - 1 - i;
                     }
                     break;
                 }
@@ -43,17 +42,16 @@ public class Main {
         if (seat[0] == '0') {
             for (int i = 1; i < n; i++) {
                 if (seat[i] == '1') {
-                    if (diff < i && (l + r) / 2 - l < i) {
+                    if (diff2 < i) {
                         edge = 0;
-                        diff = i;
-                        flag = true;
+                        diff2 = i;
                     }
                     break;
                 }
             }
         }
 
-        if (flag) {
+        if (diff2 > diff / 2) {
             seat[edge] = '1';
         } else {
             seat[(l + r) / 2] = '1';
@@ -63,7 +61,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             if (seat[i] == '1') {
                 for (int j = i + 1; j < n; j++) {
-                    if (j - i != 1 && seat[j] == '1') {
+                    if (seat[j] == '1') {
                        ans = Math.min(ans, j - i); 
                        break;
                     }
