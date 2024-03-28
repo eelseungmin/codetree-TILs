@@ -14,13 +14,15 @@ public class Main {
         int ans = 0;
         for (int i = 0; i < n; i++) {
             if (pos[i] != (char)((int)'A' + i)) {
-                for (int j = 0; j < n; j++) {
-                    if (pos[j] == (char)((int)'A' + i)) {
-                        char temp = pos[i];
-                        pos[i] = pos[j];
-                        pos[j] = temp;
-                        ans++;
-                        break;
+                while (pos[i] != (char)((int)'A' + i)) {
+                    for (int j = 0; j < n; j++) {
+                        if (pos[j] == (char)((int)'A' + i)) {
+                            char temp = pos[i];
+                            pos[i] = pos[j];
+                            pos[j] = temp;
+                            ans++;
+                            break;
+                        }
                     }
                 }
             }
