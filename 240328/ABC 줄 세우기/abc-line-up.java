@@ -17,11 +17,19 @@ public class Main {
                 while (pos[i] != (char)((int)'A' + i)) {
                     for (int j = 0; j < n; j++) {
                         if (pos[j] == (char)((int)'A' + i)) {
-                            char temp = pos[i];
-                            pos[i] = pos[j];
-                            pos[j] = temp;
-                            ans++;
-                            break;
+                            if (i < j) {
+                                char temp = pos[j - 1];
+                                pos[j - 1] = pos[j];
+                                pos[j] = temp;
+                                ans++;
+                                break;
+                            } else {
+                                char temp = pos[j + 1];
+                                pos[j + 1] = pos[j];
+                                pos[j] = temp;
+                                ans++;
+                                break;
+                            }
                         }
                     }
                 }
