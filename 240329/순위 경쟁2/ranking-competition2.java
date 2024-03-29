@@ -29,6 +29,7 @@ public class Main {
                     win = 'a';
                     ans++;
                 } else if (win == 'b') {
+                    win = 'a';
                     ans++;
                 } 
             } else if (a < b) {
@@ -36,6 +37,7 @@ public class Main {
                     win = 'b';
                     ans++;
                 } else if (win == 'a') {
+                    win = 'b';
                     ans++;
                 }
             } else {
