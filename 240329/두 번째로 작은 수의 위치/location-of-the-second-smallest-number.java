@@ -31,16 +31,24 @@ public class Main {
             }
         }
 
-        if (target == -1 || !two) {
+        if (!two) {
             System.out.print(-1);
             return;
         }
 
+        int cnt = 0;
+        int ans = 0;
         for (int i = 0; i < n; i++) {
             if (arr[i] == target) {
-                System.out.print(i + 1);
-                return;
+                cnt++;
+                ans = i + 1;
             }
+        }
+
+        if (cnt == 1) {
+            System.out.print(ans);
+        } else {
+            System.out.print(-1);
         }
     }
 }
