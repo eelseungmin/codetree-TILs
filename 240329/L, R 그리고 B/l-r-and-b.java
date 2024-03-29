@@ -37,16 +37,16 @@ public class Main {
             if ((LRow <= RRow && RRow <= BRow) || (BRow <= RRow && RRow <= LRow)) {
                 dist += Math.abs(LRow - BRow) + 1;
             } else {
-                dist += MAth.abs(LRow - BRow) - 1;
+                dist += Math.abs(LRow - BRow) - 1;
             }
         } else if (LRow == BRow && BRow == RRow) {
             if ((LCol <= RCol && RCol <= BCol) || (BCol <= RCol && RCol <= LCol)) {
                 dist += Math.abs(LCol - BCol) + 1;
             } else {
-                dist += MAth.abs(LCol - BCol) - 1;
+                dist += Math.abs(LCol - BCol) - 1;
             }
         } else {
-            dist += Math.abs(LCol - BCol) - 1 + Math.abs(LRow - BRow - 1) - 1;
+            dist += Math.abs(LCol - BCol) + Math.abs(LRow - BRow) - 1;
         }
 
         System.out.print(dist);
