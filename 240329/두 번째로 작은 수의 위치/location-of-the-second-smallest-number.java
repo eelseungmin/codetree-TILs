@@ -14,7 +14,7 @@ public class Main {
             num[i] = temp;
         }
 
-        Arrays.sort(num, Collections.reverseOrder());
+        Arrays.sort(num);
         // 10 2
         // 11111 2
         // 1 2 3 4 5
@@ -32,7 +32,7 @@ public class Main {
         }
 
         if (target == -1 || !two) {
-            System.out.print(target);
+            System.out.print(-1);
             return;
         }
 
