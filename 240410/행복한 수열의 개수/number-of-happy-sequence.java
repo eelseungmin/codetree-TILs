@@ -18,10 +18,6 @@ public class Main {
             int before = -1;
             int cnt = 1;
             for (int j = 0; j < n; j++) {
-                if (cnt >= m) {
-                    ans++;
-                    break;
-                }
                 if (map[j][i] == before) {
                     cnt++;
                 } else if (before == -1) {
@@ -31,6 +27,10 @@ public class Main {
                     before = map[j][i];
                     cnt = 1;
                 }
+                if (cnt >= m) {
+                    ans++;
+                    break;
+                }
             }
         }
 
@@ -38,10 +38,6 @@ public class Main {
             int before = -1;
             int cnt = 1;
             for (int j = 0; j < n; j++) {
-                if (cnt >= m) {
-                    ans++;
-                    break;
-                }
                 if (map[i][j] == before) {
                     cnt++;
                 } else if (before == -1) {
@@ -50,6 +46,10 @@ public class Main {
                 } else {
                     before = map[i][j];
                     cnt = 1;
+                }
+                if (cnt >= m) {
+                    ans++;
+                    break;
                 }
             }
         }
