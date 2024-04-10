@@ -22,7 +22,6 @@ public class Main {
                     cnt++;
                 } else if (before == -1) {
                     before = map[j][i];
-                    continue;
                 } else {
                     before = map[j][i];
                     cnt = 1;
@@ -42,7 +41,6 @@ public class Main {
                     cnt++;
                 } else if (before == -1) {
                     before = map[i][j];
-                    continue;
                 } else {
                     before = map[i][j];
                     cnt = 1;
