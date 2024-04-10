@@ -45,7 +45,7 @@ public class Main {
                 if (map[i][j] == before) {
                     cnt++;
                 } else if (before == -1) {
-                    before = map[j][i];
+                    before = map[i][j];
                     continue;
                 } else {
                     before = map[i][j];
