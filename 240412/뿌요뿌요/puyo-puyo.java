@@ -35,8 +35,8 @@ public class Main {
                     }
                     if (exploded) {
                         block++;
-                        max = Math.max(max, cnt);
                     }
+                    max = Math.max(max, cnt);
                 }
             }
         }
