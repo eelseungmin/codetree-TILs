@@ -15,6 +15,7 @@ public class Main {
     static int[][] map;
     static boolean[][] vis;
     static int n, k;
+    static Queue<Pair> q = new LinkedList<>();
     
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -23,18 +24,21 @@ public class Main {
         n = sc.nextInt();
         k = sc.nextInt();
         map = new int[n][n];
+        vis = new boolean[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 map[i][j] = sc.nextInt();
             }
         }
         for (int i = 0; i < k; i++) {
-            vis = new boolean[n][n];
             int r = sc.nextInt();
             int c = sc.nextInt();
-            
-            bfs(r - 1, c - 1);
+            vis[r - 1][c - 1] = true;
+            map[r - 1][c - 1] = 2;
+            q.offer(new Pair(r - 1, c - 1));
         }
+
+        bfs();
 
         int cnt = 0;
         for (int i = 0; i < n; i++) {
@@ -48,12 +52,7 @@ public class Main {
         System.out.print(cnt);
     }
 
-    static void bfs(int x, int y) {
-        Queue<Pair> q = new LinkedList<>();
-        vis[x][y] = true;
-        map[x][y] = 2;
-        q.offer(new Pair(x, y));
-
+    static void bfs() {
         while (!q.isEmpty()) {
             Pair cur = q.poll();
             
