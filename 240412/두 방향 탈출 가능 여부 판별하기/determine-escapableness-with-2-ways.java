@@ -37,7 +37,7 @@ public class Main {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if (0 <= nx && nx < n && 0 <= ny && ny < m && !vis[nx][ny] && map[nx][ny] != 1) {
+            if (0 <= nx && nx < n && 0 <= ny && ny < m && !vis[nx][ny] && map[nx][ny] != 0) {
                 vis[nx][ny] = true;
                 dfs(nx, ny);
             }
