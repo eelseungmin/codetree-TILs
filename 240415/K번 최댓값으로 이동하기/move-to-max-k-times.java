@@ -55,7 +55,7 @@ public class Main {
         }
 
         Pair last = st.pop();
-        System.out.print(last.x + 1 + " " + last.y + 1);
+        System.out.print((last.x + 1) + " " + (last.y + 1));
     }
 
     static boolean check(Pair cur) {
