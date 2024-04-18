@@ -31,26 +31,13 @@ public class Main {
     }
 
     static boolean check() {
-        int p = 0;
-        int cnt = 0;
-        int target = 0;
+        for (int i = 0; i < n; i += arr[i]) {
+            if (i + arr[i] - 1 >= n)
+                return false;
         
-        while (p < n) {
-            if (cnt == 0) {
-                cnt = arr[p];
-                target = arr[p];
-            }
-
-            while (cnt-- > 0) {
-                if (p >= n) {
+            for (int j = i; j < i + arr[i]; j++) {
+                if (arr[j] != arr[i])
                     return false;
-                }
-
-                if (arr[p] != target) {
-                    return false;
-                }
-
-                p++;
             }
         }
 
