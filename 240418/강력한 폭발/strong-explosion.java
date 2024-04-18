@@ -27,13 +27,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         map = new int[n][n];
-        arr = new int[n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 map[i][j] = sc.nextInt();
                 if (map[i][j] == 1) bombs.add(new Pair(i, j));
             }
         }
+        arr = new int[bombs.size()];
 
         // 위치는 정해져 있다.
         // 각 위치에 어떤 폭탄이 배치될지 조합을 구한 후 영역의 최댓값 갱신
