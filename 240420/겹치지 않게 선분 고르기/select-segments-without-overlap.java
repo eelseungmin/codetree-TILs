@@ -33,7 +33,7 @@ public class Main {
     static void choose(int idx) {
         if (idx == n) {
             if (possible()) {
-                ans = Math.max(ans, n);
+                ans = Math.max(ans, list.size());
             }
             return;
         }
