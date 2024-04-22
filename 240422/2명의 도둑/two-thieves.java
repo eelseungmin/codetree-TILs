@@ -3,8 +3,9 @@ import java.util.*;
 // 행 선택 후 열 선택
 
 public class Main {
-    static int n, m, c, ans;
+    static int n, m, c, ans, maxVal;
     static int[][] item;
+    static int[] arr;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -25,44 +26,45 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k <= n - m; k++) {
                     for (int h = 0; h <= n - m; h++) {
-                        if (i == j && (
-                            (k <= h && h <= k + m - 1) || 
-                            (k <= h + m - 1 && h + m - 1 <= k + m - 1) ||
-                            (h <= k && k <= h + m - 1) ||
-                            (h <= k + m - 1 && k + m - 1 <= h + m - 1))
-                            ) continue;
-                        int weight1 = 0;
-                        int weight2 = 0;
-                        int val = 0;
-                        Queue<Integer> pq1 = new PriorityQueue<>(Collections.reverseOrder());
-                        Queue<Integer> pq2 = new PriorityQueue<>(Collections.reverseOrder());
-                        for (int p = 0; p < m; p++) {
-                            pq1.offer(item[i][k + p]);
-                            pq2.offer(item[j][h + p]);
-                        }
-                        while (!pq1.isEmpty()) {
-                            int cur = pq1.poll();
-                            if (weight1 + cur <= c) {
-                                weight1 += cur;
-                                val += cur * cur;
-                            }
-                        }
-                        while (!pq2.isEmpty()) {
-                            int cur = pq2.poll();
-                            if (weight2 + cur <= c) {
-                                weight2 += cur;
-                                val += cur * cur;
-                            }
-                        }
-                        if (ans < val) {
-                            ans = val;
-                            // System.out.println(i + " " + k + " " + j + " " + h);
-                        }
+                        if (inRange(i, j, k, h, m)) continue;
+                        ans = Math.max(ans, calcVal(i, k) + calcVal(j, h));
                     }
                 }
             }
         }
         
         System.out.print(ans);
+    }
+
+    static void calcMaxSum(int idx, int weight, int val) {
+        if (idx == m) {
+            if (weight <= c) {
+                maxVal = Math.max(maxVal, val);
+            }
+            return;
+        }
+
+        calcMaxSum(idx + 1, weight, val);
+        calcMaxSum(idx + 1, weight + arr[idx], val + arr[idx] * arr[idx]);
+    }
+
+    static int calcVal(int x, int y) {
+        arr = new int[m];
+
+        for (int i = 0; i < m; i++) {
+            arr[i] = item[x][y + i];
+        }
+
+        maxVal = 0;
+        calcMaxSum(0, 0, 0);
+        return maxVal;
+    }
+
+    static boolean inRange(int i, int j, int k, int h, int m) {
+        return (i == j 
+        && ((k <= h && h <= k + m - 1) 
+        || (k <= h + m - 1 && h + m - 1 <= k + m - 1) 
+        || (h <= k && k <= h + m - 1) 
+        || (h <= k + m - 1 && k + m - 1 <= h + m - 1)));
     }
 }
