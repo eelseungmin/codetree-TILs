@@ -1,7 +1,6 @@
 import java.util.*;
 
-// 같은 행을 골랐을 때 겹치는 경우는 2가지
-// 행 2중 for문으로 선택 후 열의 조합 선택
+// 행 선택 후 열 선택
 
 public class Main {
     static int n, m, c, ans;
@@ -20,11 +19,18 @@ public class Main {
             }
         }
 
+        // k k+m h h+m
+        // 1 2
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k <= n - m; k++) {
                     for (int h = 0; h <= n - m; h++) {
-                        if (i == j && ((k == h) || (k == h + 1) || (h == k + 1))) continue;
+                        if (i == j && (
+                            (k <= h && h <= k + m - 1) || 
+                            (k <= h + m - 1 && h + m - 1 <= k + m - 1) ||
+                            (h <= k && k <= h + m - 1) ||
+                            (h <= k + m - 1 && k + m - 1 <= h + m - 1))
+                            ) continue;
                         int weight1 = 0;
                         int weight2 = 0;
                         int val = 0;
