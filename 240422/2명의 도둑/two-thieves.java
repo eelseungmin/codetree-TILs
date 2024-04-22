@@ -22,9 +22,9 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                for (int k = 0; k < n - m; k++) {
-                    for (int h = 0; h < n - m; h++) {
-                        if (i == j && (k == h) || (k == h + 1) || (h == k + 1)) continue;
+                for (int k = 0; k <= n - m; k++) {
+                    for (int h = 0; h <= n - m; h++) {
+                        if (i == j && ((k == h) || (k == h + 1) || (h == k + 1))) continue;
                         int weight1 = 0;
                         int weight2 = 0;
                         int val = 0;
@@ -39,8 +39,6 @@ public class Main {
                             if (weight1 + cur <= c) {
                                 weight1 += cur;
                                 val += cur * cur;
-                            } else {
-                                break;
                             }
                         }
                         while (!pq2.isEmpty()) {
@@ -48,11 +46,12 @@ public class Main {
                             if (weight2 + cur <= c) {
                                 weight2 += cur;
                                 val += cur * cur;
-                            } else {
-                                break;
                             }
                         }
-                        ans = Math.max(ans, val);
+                        if (ans < val) {
+                            ans = val;
+                            // System.out.println(i + " " + k + " " + j + " " + h);
+                        }
                     }
                 }
             }
