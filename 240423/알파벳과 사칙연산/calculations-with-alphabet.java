@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    static int n, max;
+    static int max = Integer.MIN_VALUE;
     static String str;
     static int[] alpha = new int[26];
 
