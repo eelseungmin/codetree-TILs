@@ -16,7 +16,7 @@ public class Main {
 
     static void choose(int idx) {
         if (idx == n) {
-            for (int i = 0; i < arr.length; i++) {
+            for (int i = 0; i < n; i++) {
                 System.out.print(arr[i] + " ");
             }
             System.out.println();
@@ -25,7 +25,7 @@ public class Main {
         }   
 
         for (int i = 1; i <= k; i++) {
-            if (n >= 3 && arr[idx - 2] == arr[idx - 1] && arr[idx - 1] == i) continue;
+            if (idx >= 2 && arr[idx - 2] == arr[idx - 1] && arr[idx - 1] == i) continue;
             arr[idx] = i;
             choose(idx + 1);
         }
