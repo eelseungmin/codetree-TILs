@@ -16,7 +16,12 @@ public class Main {
     }
 
     static int calc() {
+        if (str.length() == 1) {
+            return alpha[str.charAt(0) - 'a'];
+        }
+
         StringBuilder sb = new StringBuilder();
+
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
 
@@ -59,7 +64,6 @@ public class Main {
                     result = result * (calcStr[i + 1] - '0');
                 }
             } else {
-                continue;
             }
         }
 
