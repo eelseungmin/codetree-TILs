@@ -24,14 +24,14 @@ public class Main {
     }
 
     static void jump(int idx, int cnt) {
-        if (idx == n - 1) {
+        if (idx >= n - 1) {
             ans = Math.min(ans, cnt);
             return;
         }
-
         if (num[idx] == 0) {
             return;
         }
+
         for (int i = 1; i <= num[idx]; i++) {
             jump(idx + i, cnt + 1);
         }
