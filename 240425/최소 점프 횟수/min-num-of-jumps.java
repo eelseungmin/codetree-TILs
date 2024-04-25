@@ -3,7 +3,6 @@ import java.util.*;
 public class Main {
     static int n;
     static int ans = Integer.MAX_VALUE;
-    static boolean flag = true;
     static int[] num;
 
     public static void main(String[] args) {
@@ -17,7 +16,7 @@ public class Main {
 
         jump(0, 0);
 
-        if (flag) {
+        if (ans != Integer.MAX_VALUE) {
             System.out.print(ans);
         } else {
             System.out.print(-1);
@@ -31,7 +30,6 @@ public class Main {
         }
 
         if (num[idx] == 0) {
-            flag = false;
             return;
         }
         for (int i = 1; i <= num[idx]; i++) {
