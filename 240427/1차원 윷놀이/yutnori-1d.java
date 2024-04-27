@@ -26,7 +26,7 @@ public class Main {
         if (idx == n) {
             int score = 0;
             for (int i = 0; i < k; i++) {
-                if (dist[i] >= m) {
+                if (dist[i] >= m - 1) {
                     score++;
                 }
             }
