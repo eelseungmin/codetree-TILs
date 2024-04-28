@@ -11,7 +11,7 @@ public class Main {
         m = sc.nextInt();
         arr = new int[m];
 
-        choose(0, );
+        choose(0, 1);
     }
 
     static void choose(int idx, int start) {
