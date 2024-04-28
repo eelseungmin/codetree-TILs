@@ -11,7 +11,7 @@ public class Main {
         m = sc.nextInt();
         arr = new int[m];
 
-        choose(0, 1);
+        choose(0, );
     }
 
     static void choose(int idx, int start) {
@@ -24,9 +24,8 @@ public class Main {
         }
 
         for (int i = start; i <= n; i++) {
-                arr[idx] = i;
-                choose(idx + 1, i + 1);
-            }
+            arr[idx] = i;
+            choose(idx + 1, i + 1);
         }
     }
 }
