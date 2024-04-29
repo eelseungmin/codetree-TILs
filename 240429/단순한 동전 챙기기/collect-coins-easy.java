@@ -1,11 +1,18 @@
 import java.util.*;
 
-class Pair {
+class Pair implements Comparable<Pair> {
     int x, y;
+    char val;
 
-    Pair(int x, int y) {
+    Pair(int x, int y, char val) {
         this.x = x;
         this.y = y;
+        this.val = val;
+    }
+
+    @Override
+    public int compareTo(Pair p) {
+        return this.val - p.val;
     }
 }
 
@@ -33,17 +40,17 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 map[i][j] = tmp.charAt(j);
                 if (map[i][j] == 'S') {
-                    s = new Pair(i, j);
+                    s = new Pair(i, j, 'S');
                 } else if (map[i][j] == 'E') {
-                    e = new Pair(i, j);
+                    e = new Pair(i, j, 'E');
                 } else if (map[i][j] == '.') {
                     continue;
                 } else {
-                    list.add(new Pair(i, j));
+                    list.add(new Pair(i, j, map[i][j]));
                 }
             }
         }
-
+        Collections.sort(list);
         choose(0, -1);
 
         if (ans == Integer.MAX_VALUE) {
@@ -92,7 +99,7 @@ public class Main {
 
                 if (0 <= nx && nx < n && 0 <= ny && ny < n && dist[nx][ny] == -1) {
                     dist[nx][ny] = dist[cur.x][cur.y] + 1;
-                    q.offer(new Pair(nx, ny));
+                    q.offer(new Pair(nx, ny, map[nx][ny]));
                 }
             }
         }
