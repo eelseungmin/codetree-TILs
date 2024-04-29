@@ -94,7 +94,7 @@ public class Main {
                 int nx = cur.x + dx[i];
                 int ny = cur.y + dy[i];
 
-                if (0 <= nx && nx < n && 0 <= ny && ny < n) {
+                if (0 <= nx && nx < n && 0 <= ny && ny < n && dist[nx][ny] == -1) {
                     dist[nx][ny] = dist[cur.x][cur.y] + 1;
                     q.offer(new Pair(nx, ny));
                 }
