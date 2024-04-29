@@ -57,15 +57,11 @@ public class Main {
         if (idx == 3) {
             int dist = 0;
 
-            for (int i = 0; i < selected.size(); i++) {
-                if (i == 0) {
-                    dist += bfs(s, selected.get(i));
-                } else if (i == selected.size() - 1) {
-                    dist += bfs(selected.get(i), e);
-                } else {
-                    dist += bfs(selected.get(i), selected.get(i + 1));
-                }
+            for (int i = 0; i < selected.size() - 1; i++) {
+                dist += bfs(selected.get(i), selected.get(i + 1));
             }
+            dist += bfs(s, selected.get(0));
+            dist += bfs(selected.get(selected.size() - 1), e);
 
             ans = Math.min(ans, dist);
             return;
