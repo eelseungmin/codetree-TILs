@@ -3,8 +3,6 @@ import java.util.*;
 public class Main {
     static int n;
     static int[] arr;
-    static boolean flag;
-    static List<String> list = new ArrayList<>();
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -16,10 +14,6 @@ public class Main {
     }
 
     static void choose(int idx) {
-        if (flag) {
-            return;
-        }
-
         if (idx == n) {
             if (isPossible()) {
                 String ans = "";
@@ -27,7 +21,7 @@ public class Main {
                     ans += arr[i] + "";
                 }
                 System.out.print(ans);
-                flag = true;
+                System.exit(0);
             }
             return;
         }
