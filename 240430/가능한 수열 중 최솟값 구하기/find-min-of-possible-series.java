@@ -3,6 +3,7 @@ import java.util.*;
 public class Main {
     static int n;
     static int[] arr;
+    static boolean flag;
     static List<String> list = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -12,18 +13,21 @@ public class Main {
         arr = new int[n];
 
         choose(0);
-
-        System.out.print(list.get(0));
     }
 
     static void choose(int idx) {
+        if (flag) {
+            return;
+        }
+
         if (idx == n) {
             if (isPossible()) {
                 String ans = "";
                 for (int i = 0; i < n; i++) {
                     ans += arr[i] + "";
                 }
-                list.add(ans);
+                System.out.print(ans);
+                flag = true;
             }
             return;
         }
