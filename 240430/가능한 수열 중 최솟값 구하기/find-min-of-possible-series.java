@@ -35,8 +35,8 @@ public class Main {
     }
 
     static boolean isPossible() {
-        for (int i = 1; i <= n / 2; i++) {
-            for (int j = 0; j < n / 2; j++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j + 2 * i <= n; j++) {
                 String tmp1 = "";
                 String tmp2 = "";
                 for (int k = j; k < j + i; k++) {
