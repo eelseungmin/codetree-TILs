@@ -24,9 +24,7 @@ public class Main {
 
     static void choose(int idx) {
         if (idx == n) {
-            if (check()) {
-                ans = Math.max(ans, calcSum());
-            }
+            ans = Math.max(ans, calcSum());
             return;
         }
 
@@ -34,7 +32,8 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 if (!vis[i][j]) {
                     vis[i][j] = true;
-                    choose(idx + 1);
+                    if (check())
+                        choose(idx + 1);
                     vis[i][j] = false;
                 }
             }
