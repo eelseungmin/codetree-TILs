@@ -12,12 +12,10 @@ public class Main {
         dp[4] = 1; // 2 2
         dp[5] = 2; // 2 3  3 2
         dp[6] = 2; // 2 2 2  3 3
-        dp[7] = 3; // 2 2 3  2 3 2  3 2 2
-        dp[8] = 5; // 2 2 2 2  2 3 3  3 2 3  3 3 2
-        for (int i = 6; i < 1001; i++) {
+        for (int i = 7; i < 1001; i++) {
            dp[i] = (dp[i - 2] + dp[i - 3]) % 10007;
         }
 
-        System.out.print(dp[n] % 10007);
+        System.out.print(dp[n]);
     }
 }
