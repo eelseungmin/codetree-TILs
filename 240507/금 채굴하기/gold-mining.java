@@ -19,7 +19,7 @@ public class Main {
         // 격자의 각 위치가 마름모의 중앙일 때 k를 최대 범위까지 늘려가면서 금의 최대 개수 갱신
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                for (int k = 0; k < 2 * (n - 1); k++) {
+                for (int k = 0; k <= 2 * (n - 1); k++) {
                     int gold = calculate(i, j, k);
 
                     if (m * gold >= getArea(k)) {
