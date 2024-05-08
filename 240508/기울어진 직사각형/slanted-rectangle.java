@@ -5,7 +5,6 @@ public class Main {
     static int[] dx = {-1, -1, 1, 1}; // 1 - 2 - 3 - 4
     static int[] dy = {1, -1, -1, 1};
     static int[][] map;
-    static boolean[][] vis;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -19,46 +18,37 @@ public class Main {
             }
         }
 
-        // 시작 위치를 기억해두고 숫자대로 순회를 하면서 합을 구한 뒤 최대값 갱신
-        // 이때 격자를 벗어나기 전까지 계속해서 한 방향으로 이동
+        // 완전탐색을 통해 최대값 갱신
+        // 시작 위치 i, j 선택 후 길이 [k, l, k, l] 선택
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                int x = i;
-                int y = j;
-
-                int sum = 0;
-                int success = 0;
-                // flag가 true일 때 최대값 갱신
-                for (int k = 0; k < 4; k++) {
-                    int cnt = 0;
-                    while (true) {
-                        x += dx[k];
-                        y += dy[k];
-                        if (!inRange(x, y)) {
-                            // 최소 한 번은 이동해야 기울어진 직사각형 조건 충족
-                            if (cnt < 1) break;
-                            else {
-                                x -= dx[k];
-                                y -= dy[k];
-                                success++;
-                                break;
-                            }
-                        }
-                        cnt++;
-                        sum += map[x][y];
-                        if (k == 3 && x == i && y == j) {
-                            success++;
-                            break;
-                        }
+                for (int k = 1; k < n; k++) {
+                    for (int l = 1; l < n; l++) {
+                        ans = Math.max(ans, getScore(i, j, k, l));
                     }
                 }
-
-                if (success == 4)
-                    ans = Math.max(ans, sum);
             }
         }
 
         System.out.print(ans);
+    }
+
+    static int getScore(int x, int y, int k, int l) {
+        int sum = 0;
+        int[] moveNum = new int[]{k, l, k, l};
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < moveNum[i]; j++) {
+                x += dx[i];
+                y += dy[i];
+
+                if (!inRange(x, y))
+                    return 0;
+                
+                sum += map[x][y];
+            }
+        }
+
+        return sum;
     }
 
     static boolean inRange(int x, int y) {
