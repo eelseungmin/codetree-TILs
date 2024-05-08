@@ -5,12 +5,14 @@ public class Main {
     static int[] dx = {-1, -1, 1, 1}; // 1 - 2 - 3 - 4
     static int[] dy = {1, -1, -1, 1};
     static int[][] map;
+    static boolean[][] vis;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         map = new int[n][n];
+        vis = new boolean[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 map[i][j] = sc.nextInt();
@@ -25,7 +27,7 @@ public class Main {
                 int y = j;
 
                 int sum = 0;
-                boolean flag = false;
+                int success = 0;
                 // flag가 true일 때 최대값 갱신
                 for (int k = 0; k < 4; k++) {
                     int cnt = 0;
@@ -33,23 +35,25 @@ public class Main {
                         x += dx[k];
                         y += dy[k];
                         if (!inRange(x, y)) {
+                            // 최소 한 번은 이동해야 기울어진 직사각형 조건 충족
                             if (cnt < 1) break;
                             else {
                                 x -= dx[k];
                                 y -= dy[k];
+                                success++;
                                 break;
                             }
                         }
                         cnt++;
                         sum += map[x][y];
                         if (k == 3 && x == i && y == j) {
-                            flag = true;
+                            success++;
                             break;
                         }
                     }
                 }
 
-                if (flag)
+                if (success == 4)
                     ans = Math.max(ans, sum);
             }
         }
