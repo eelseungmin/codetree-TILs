@@ -11,7 +11,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         map = new int[n][n];
-        vis = new boolean[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 map[i][j] = sc.nextInt();
