@@ -42,7 +42,7 @@ public class Main {
     static boolean check(int x1, int y1, int x2, int y2) {
         for (int i = x1; i <= x2; i++) {
             for (int j = y1; j <= y2; j++) {
-                if (map[i][j] < 0) {
+                if (map[i][j] <= 0) {
                     return false;
                 }
             }
