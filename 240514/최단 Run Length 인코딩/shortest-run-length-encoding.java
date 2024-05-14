@@ -41,9 +41,12 @@ public class Main {
                 before = cur;
                 cnt = 1;
             }
+            cnt++;
         }
         res += before;
         res += String.valueOf(cnt);
+
+        // System.out.println(res);
 
         return res;
     }
