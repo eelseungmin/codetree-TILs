@@ -9,21 +9,26 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         a = sc.next();
 
-        for (int i = 1; i < a.length(); i++) {
+        for (int i = 0; i < a.length(); i++) {
             String res = encoding(shift(i));
+            // System.out.println("i: " + i + " res: " + res);
             if (res.length() > 0)
                 ans = Math.min(ans, res.length());
         }
 
         System.out.print(ans);
     }
-
+    
     static String shift(int cnt) {
-        String prefix = "";
+        Stack<Character> st = new Stack<>();
         for (int i = 1; i <= cnt; i++) {
-            prefix += a.charAt(a.length() - i);
+            st.push(a.charAt(a.length() - i));
         }
         
+        String prefix = "";
+        while (!st.isEmpty()) {
+            prefix += st.pop();
+        }
         return prefix + a.substring(0, a.length() - prefix.length());
     }
 
@@ -37,16 +42,14 @@ public class Main {
             if (before != cur) {
                 res += before;
                 res += String.valueOf(cnt);
-
                 before = cur;
                 cnt = 1;
+                continue;
             }
             cnt++;
         }
         res += before;
         res += String.valueOf(cnt);
-
-        // System.out.println(res);
 
         return res;
     }
