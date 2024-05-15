@@ -20,9 +20,19 @@ public class Main {
         }
 
         for (int i = 0; i < n; i++) {
+            if (i == n - 1){
+                for (int j = k; j <= k + m - 1; j++) {
+                    if (j < n) {
+                        map[i][j] = 1;
+                    }
+                }
+                break;
+            }
             if (check(i)) {
                 for (int j = k; j <= k + m - 1; j++) {
-                    map[i][j] = 1;
+                    if (j < n) {
+                        map[i][j] = 1;
+                    }
                 }
                 break;
             }
