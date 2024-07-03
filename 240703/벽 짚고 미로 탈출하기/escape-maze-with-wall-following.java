@@ -40,8 +40,20 @@ public class Main {
                 continue;
             } else if (flag == 1) {
                 cnt = 0;
-                curx += dx[dir];
-                cury += dy[dir];
+
+                int ndir = (dir + 1) % 4;
+                int nx = curx + dx[dir] + dx[ndir];
+                int ny = cury + dy[dir] + dy[ndir];
+                if (maze[nx][ny] == '#') {
+                    curx += dx[dir];
+                    cury += dy[dir];
+                } else {
+                    curx += dx[dir];
+                    cury += dy[dir];
+                    dir = (dir + 1) % 4;
+                    curx += dx[dir];
+                    cury += dy[dir];
+                }
             } else {
                 time++;
                 break;
@@ -60,7 +72,7 @@ public class Main {
             if (maze[nx][ny] == '#') {
                 return 0;
             }
-            return 1; 
+            return 1;
         }
 
         return 2;
