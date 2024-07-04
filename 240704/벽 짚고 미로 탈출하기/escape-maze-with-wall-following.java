@@ -4,8 +4,8 @@ public class Main {
     static int n, curx, cury;
     static char[][] maze;
     static int dir;
-    static int[] dx = {0, 1, -1, 0};
-    static int[] dy = {1, 0, 0, -1};
+    static int[] dx = {0, 1, 0, -1};
+    static int[] dy = {1, 0, -1, 0};
     static int time;
 
     public static void main(String[] args) {
@@ -78,6 +78,7 @@ public class Main {
             return 2;
         }
 
+        System.out.println(nx + " " + ny);
         return 3;
     }
 }
