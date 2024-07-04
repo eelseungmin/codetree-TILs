@@ -35,7 +35,7 @@ public class Main {
                     System.out.print(-1);
                     return;
                 }
-                dir = (dir + 1) % 4;
+                dir = (dir - 1) % 4;
                 cnt++;
                 continue;
             } else if (flag == 1) {
