@@ -44,12 +44,6 @@ public class Main {
                 cury += dy[dir];
             } else if (flag == 2) {
                 cnt = 0;
-                curx += dx[dir];
-                cury += dy[dir];
-                time++;
-                dir = (dir + 1) % 4;
-                curx += dx[dir];
-                cury += dy[dir];
             } else {
                 time++;
                 break;
@@ -77,6 +71,10 @@ public class Main {
                 return 1;
             }
 
+            time++;
+            dir = ndir;
+            curx = nnx;
+            cury = nny;
             return 2;
         }
 
