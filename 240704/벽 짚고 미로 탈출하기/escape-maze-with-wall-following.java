@@ -1,11 +1,11 @@
 import java.util.*;
 
 public class Main {
-    static int n, curx, cury;
+    static int n, curx, cury, dir;
     static char[][] maze;
-    static int dir;
     static int[] dx = {0, 1, 0, -1};
     static int[] dy = {1, 0, -1, 0};
+    static boolean[][][] vis;
     static int time;
 
     public static void main(String[] args) {
@@ -15,6 +15,7 @@ public class Main {
         curx = sc.nextInt();
         cury = sc.nextInt();
         maze = new char[n + 1][n + 1];
+        vis = new boolean[n + 1][n + 1][4];
         for (int i = 0; i < n; i++) {
             String tmp = sc.next();
             for (int j = 0; j < n; j++) {
@@ -22,63 +23,65 @@ public class Main {
             }
         }
 
-        simulation();
-    }
-
-    public static void simulation() {
-        int cnt = 0;
-
-        while (true) {
-            int flag = canMove(curx, cury, dir);
-            if (flag == 0) {
-                if (cnt > 3) {
-                    System.out.print(-1);
-                    return;
-                }
-                dir = (dir - 1) % 4;
-                cnt++;
-                continue;
-            } else if (flag == 1) {
-                cnt = 0;
-                curx += dx[dir];
-                cury += dy[dir];
-            } else if (flag == 2) {
-                cnt = 0;
-            } else {
-                time++;
-                break;
-            }
-            time++;
+        while (inRange(curx, cury)) {
+            simulation();
         }
 
         System.out.print(time);
     }
 
-    public static int canMove(int x, int y, int dir) {
-        int nx = x + dx[dir];
-        int ny = y + dy[dir];
+    public static boolean inRange(int x, int y) {
+        return 1 <= x && x <= n && 1 <= y && y <= n;
+    }
 
-        if (1 <= nx && nx <= n && 1 <= ny && ny <= n) {
-            if (maze[nx][ny] == '#') {
-                return 0;
-            }
+    public static boolean wallExist(int x, int y) {
+        return inRange(x, y) && maze[x][y] == '#';
+    }
 
-            int ndir = (dir + 1) % 4;
-            int nnx = nx + dx[ndir];
-            int nny = ny + dy[ndir];
-
-            if (maze[nnx][nny] == '#') {
-                return 1;
-            }
-
-            time++;
-            dir = ndir;
-            curx = nnx;
-            cury = nny;
-            return 2;
+    public static void simulation() {
+        // 방문 여부 확인
+        if (vis[curx][cury][dir]) {
+            System.out.print(-1);
+            System.exit(0);
         }
 
-        System.out.println(nx + " " + ny);
-        return 3;
+        // 방문 체크
+        vis[curx][cury][dir] = true;
+        
+        int nx = curx + dx[dir];
+        int ny = cury + dy[dir];
+
+        // case 1
+        if (wallExist(nx, ny)) {
+            dir = (dir - 1 + 4) % 4;
+        }
+
+        // case 2
+        else if (!inRange(nx, ny)) {
+            curx = nx;
+            cury = ny;
+            time++;
+        }
+
+        // case 3
+        else {
+            int nnx = nx + dx[(dir + 1) % 4];
+            int nny = ny + dy[(dir + 1) % 4];
+
+            // case 3-1
+            if (wallExist(nnx, nny)) {
+                curx = nx;
+                cury = ny;
+                time++;
+            }
+
+            // case 3-2
+            else {
+                curx = nnx;
+                cury = nny;
+                dir = (dir + 1) % 4;
+                time += 2;
+            }
+        }
     }
 }
