@@ -83,13 +83,14 @@ public class Main {
     }
 
     static boolean simulation(int count, int dir) {
-        boolean apple = false;
-
         while (count-- > 0) {
+            boolean apple = false;
             int nx = snake.get(0).x + dx[dir];
             int ny = snake.get(0).y + dy[dir];
             // 격자 안인지 확인
-            if (!inRange(nx, ny)) return false;
+            if (!inRange(nx, ny)) {
+                return false;
+            }            
             // 사과가 있는지 확인
             if (map[nx][ny] == 1) {
                 apple = true;
@@ -100,7 +101,6 @@ public class Main {
             int lasty = snake.get(0).y;
             snake.get(0).x = nx;
             snake.get(0).y = ny;
-            // System.out.println(nx + " " + ny);
             int tmpx = 0;
             int tmpy = 0;
             // 나머지 부위 이동
@@ -112,13 +112,39 @@ public class Main {
                 lastx = tmpx;
                 lasty = tmpy;
             }
-            // 사과를 먹었으면 꼬리를 늘린다.
-            if (apple) snake.add(new Point(lastx, lasty));
+            if (apple) {
+                snake.add(new Point(lastx, lasty));
+            }
             // 머리가 다른 부위랑 하나라도 겹치는지 확인
-            if (isOverlap()) return false;
+            if (isOverlap()) {
+                return false;
+            }
             time++;
         }
 
         return true;
     }
+
+    // static void printMap() {
+    //     for (int i = 1; i <= n; i++) {
+    //         for (int j = 1; j <= n; j++) {
+    //             if (isSnake(i, j)) {
+    //                 System.out.print("s ");
+    //             } else {
+    //                 System.out.print(map[i][j] + " ");
+    //             }
+    //         }
+    //         System.out.println();
+    //     }
+    // }
+
+    // static boolean isSnake(int x, int y) {
+    //     for (int i = 0; i < snake.size(); i++) {
+    //         if (x == snake.get(i).x && y == snake.get(i).y) {
+    //             return true;
+    //         }
+    //     }
+
+    //     return false;
+    // }
 }
