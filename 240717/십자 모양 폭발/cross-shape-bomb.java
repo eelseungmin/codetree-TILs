@@ -42,20 +42,19 @@ public class Main {
             }
         }
 
-        // 중력에 따라 숫자 떨어뜨리기 
+        // 중력에 따라 숫자 떨어뜨리기
         for (int i = 1; i <= n; i++) {
-            boolean flag = false;
+            Queue<Integer> q = new LinkedList<>();
             for (int j = n; j >= 1; j--) {
-                if (map[j][i] == 0) {
-                    flag = true;
-                    continue;
+                if (map[j][i] != 0) {
+                    q.offer(map[j][i]);
                 }
-                
-                int tmp = 0;
-                if (flag) {
-                    tmp = map[j + 1][i];
-                    map[j + 1][i] = map[j][i];
-                    map[j][i] = tmp;
+            }
+            for (int j = n; j >= 1; j--) {
+                if (!q.isEmpty()) {
+                    map[j][i] = q.poll();
+                } else {
+                    map[j][i] = 0;
                 }
             }
         }
