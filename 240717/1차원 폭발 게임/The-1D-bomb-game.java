@@ -25,7 +25,7 @@ public class Main {
 
         while (true) {
             // 현재 상태에서 m개 이상 연속한 폭탄이 있는지 확인, 없으면 종료
-            if (!check()) {
+            if (list.isEmpty() || !check()) {
                 break;
             }
 
