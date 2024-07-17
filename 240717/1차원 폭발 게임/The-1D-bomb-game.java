@@ -42,7 +42,10 @@ public class Main {
     static boolean check() {
         int target = list.get(0);
         int len = 1;
-        for (int i = 1; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i == 0) {
+                continue;
+            }
             if (list.get(i) == target) {
                 len++;
                 if (len >= m) return true;
@@ -50,6 +53,9 @@ public class Main {
                 target = list.get(i);
                 len = 1;
             }
+        }
+        if (len >= m) {
+            return true;
         }
 
         return false;
@@ -60,10 +66,15 @@ public class Main {
         Queue<Integer> q = new LinkedList<>();
 
         int l = 0;
-        int r = 0;
+        int r = -1;
         int len = 1;
         int target = list.get(0);
-        for (int i = 1; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
+            // System.out.println("1:");
+            if (i == 0) {
+                r++;
+                continue;
+            }
             if (list.get(i) == target) {
                 r++;
                 len++;
@@ -80,6 +91,7 @@ public class Main {
             }
         }
         if (len >= m) {
+            // System.out.println("2:");
             for (int j = l; j <= r; j++) {
                 temp[j] = true;
             }
@@ -87,6 +99,7 @@ public class Main {
 
         for (int i = 0; i < temp.length; i++) {
             if (!temp[i]) {
+                // System.out.println("3:");
                 q.offer(list.get(i));
             }
         }
