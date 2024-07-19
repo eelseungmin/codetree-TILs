@@ -48,6 +48,7 @@ public class Main {
             rotate(map);
             rotate(map);
             push();
+            sum();
             rotate(ans);
         } else {
             rotate(map);
