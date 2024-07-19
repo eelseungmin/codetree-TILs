@@ -34,12 +34,10 @@ public class Main {
         // 이후 합치기 작업 수행
         // 수행한 결과를 ans 배열에 입력
         if (dir == 'L') {
-            push();
             sum();
         } else if (dir == 'R') {
             rotate(map);
             rotate(map);
-            push();
             sum();
             rotate(ans);
             rotate(ans);
@@ -47,65 +45,42 @@ public class Main {
             rotate(map);
             rotate(map);
             rotate(map);
-            push();
             sum();
             rotate(ans);
         } else {
             rotate(map);
-            push();
             sum();
             rotate(ans);
             rotate(ans);
             rotate(ans);
         }
-    }
-
-    static void push() {
-        for (int i = 0; i < 4; i++) {
-            Queue<Integer> q = new LinkedList<>();
-            for (int j = 0; j < 4; j++) {
-                if (map[i][j] != 0) q.offer(map[i][j]);
-            }
-            int idx = 0;
-            for (int j = 0; j < 4; j++) {
-                if (!q.isEmpty()) map[i][j] = q.poll();
-                else map[i][j] = 0;
-            }
-        }
-
-        // System.out.println("push");
-        // for (int i = 0; i < 4; i++) {
-        //     for (int j = 0; j < 4; j++) {
-        //         System.out.print(map[i][j] + " ");
-        //     }
-        //     System.out.println();
-        // }
-        // System.out.println();
     }
 
     static void sum() {
         for (int i = 0; i < 4; i++) {
             int idx = 0;
-            for (int j = 0; j <= 3; j++) {
-                if (j == 3) {
-                    ans[i][idx] = map[i][j];
-                    break;
-                }
-                if (map[i][j] != map[i][j + 1]) {
-                    if (ans[i][j] != 0 && map[i][j] == 0) {
-                        ans[i][idx] = map[i][j];
-                        break;
-                    } else {
-                        ans[i][idx++] = map[i][j];
-                        if (j == 2) { 
-                            ans[i][idx] = map[i][j + 1];
-                            break;
-                        }
-                    }
+            int keepNum = -1;
+            for (int j = 0; j < 4; j++) {
+                if (map[i][j] == 0) continue;
+                // 가장 최근에 관찰한 숫자가 없다면 갱신
+                if (keepNum == -1) {
+                    keepNum = map[i][j];
+                    // 가장 최근에 관찰한 숫자가 현재 숫자와 일치한다면
+                    // 합친 뒤 관찰한 숫자 초기화(한 번만 합치고 다음 쌍으로 넘어가야 하므로)
+                } else if (keepNum == map[i][j]) {
+                    ans[i][idx++] = keepNum * 2;
+                    keepNum = -1;
+                    // 가장 최근에 관찰한 숫자가 현재 숫자와 다르다면
+                    // 관찰한 숫자를 배열에 기록한 뒤, 관찰한 숫자 갱신
                 } else {
-                    ans[i][idx++] = map[i][j] * 2;
-                    j++;
+                    ans[i][idx++] = keepNum;
+                    keepNum = map[i][j];
                 }
+            }
+
+            // 가장 최근에 관찰한 숫자가 남아있는 경우, 끄트머리에 혼자 남은 것이므로 배열에 기록
+            if (keepNum != -1) {
+                ans[i][idx++] = keepNum;
             }
         }
     }
@@ -119,14 +94,10 @@ public class Main {
             }
         }
 
-        // System.out.println("rotate");
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 target[i][j] = tmp[i][j];
-                // System.out.print(target[i][j] + " ");
             }
-            // System.out.println();
         }
-        // System.out.println();
     }
 }
